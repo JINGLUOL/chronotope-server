@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  http:
+    clients: # 全局默认值（可选）
+      connect-timeout: 5000
+      read-timeout: 10000
+    service client:
+      sign: # 对应 @ImportHttpServices 的 group 名称
+        base-url: lb://SERVICE-USER # 可直接写服务名，配合 LoadBalancer 使用
+        connect-timeout: 2000
+        read-timeout: 3000
+        default-header:
+          X-Client-Group: sign
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd_HH:mm:ss
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: service-user
+              uri: lb://SERVICE-USER
+              predicates:
+                - Path=/api/user/**
+              filters:
+                - StripPrefix=1
+            - id: service-pastime-go-game
+              uri: lb://SERVICE-PASTIME-GO-GAME
+              predicates:
+                - Path=/api/go-game/**
+              filters:
+                - StripPrefix=1
+
+springdoc:
+  swagger-ui:
+    path: /api-docs
+    urls:
+      - name: 业务服务-用户
+        url: /api/user/v3/api-docs   # 通过网关路由到子服务的 /v3/api-docs
+      - name: 业务服务-围棋
+        url: /api/go-game/v3/api-docs
+
+security:
+  whitelist:
+    paths:
+      # 业务 API 文档
+      - "/api/*/v3/api-docs"
+      # 基础业务
+      - "/api/user/sign"
+      - "/api/user/reg"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#logging:
+#  level:
+#    # 1. 网关路由匹配与转发核心（你当前最需要的）
+#    org.springframework.cloud.gateway: TRACE
+#    # 2. 负载均衡器选择实例的详细过程
+#    org.springframework.cloud.loadbalancer: TRACE
+#    # 3. Reactor Netty 底层通信（能看到真实的转发地址和连接状态）
+#    reactor.netty: DEBUG # 或 TRACE，按需调整
