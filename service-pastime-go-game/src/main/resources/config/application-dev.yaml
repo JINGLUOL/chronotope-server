@@ -1,0 +1,36 @@
+server:
+  port: 8091
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: service-pastime-go-game
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ctp_user_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: Abc123
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /go-game/v3/api-docs   # 保持默认路径，供网关抓取
+  swagger-ui:
+    enabled: false        # 关键：关闭子服务自身的UI
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: assign_id
+      update-strategy: not_null
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
