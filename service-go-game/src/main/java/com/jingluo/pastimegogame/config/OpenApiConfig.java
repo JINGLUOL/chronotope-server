@@ -1,4 +1,4 @@
-package com.jingluo.servicepastimegogame.config;
+package com.jingluo.pastimegogame.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

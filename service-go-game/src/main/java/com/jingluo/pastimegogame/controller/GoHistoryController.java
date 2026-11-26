@@ -1,4 +1,4 @@
-package com.jingluo.servicepastimegogame.controller;
+package com.jingluo.pastimegogame.controller;
 
 import org.springframework.web.bind.annotation.*;
 

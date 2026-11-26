@@ -3,20 +3,23 @@ package com.jingluo.dto.resp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-public record Result<T>(String code, String msg, T data, String error) {
 
-    public static ResponseEntity<Result<Void>> error(
+public class Result {
+
+    public static ResponseEntity<ResultError> error(
             HttpStatus status, String code, String msg, String error
     ) {
-        return ResponseEntity.status(status).body(new Result<>(
-                code, msg, null, error
-        ));
+        return ResponseEntity.status(status).body(
+                new ResultError(code, msg, error)
+        );
     }
 
-    public static ResponseEntity<Result<?>> error(
-            HttpStatus status, Result<?> result
+    public static ResponseEntity<ResultSuc<?>> ok(
+            HttpStatus status, String code, String msg, Object data
     ) {
-        return ResponseEntity.status(status).body(result);
+        return ResponseEntity.status(status).body(
+                new ResultSuc<>(code, msg, data)
+        );
     }
 
 }

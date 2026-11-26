@@ -1,6 +1,7 @@
 package com.jingluo.pastimeminecraft.handler;
 
 import com.jingluo.dto.resp.Result;
+import com.jingluo.dto.resp.ResultError;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ public class GlobalExceptionHandler {
 
     // 兜底：处理所有未被其他方法精确匹配的异常
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Result<Void>> handle(Exception ex) {
+    public ResponseEntity<ResultError> handle(Exception ex) {
         // 生产环境日志记录完整堆栈，但返回给前端的只应是友好提示
         return Result.error(
                 HttpStatus.INTERNAL_SERVER_ERROR,

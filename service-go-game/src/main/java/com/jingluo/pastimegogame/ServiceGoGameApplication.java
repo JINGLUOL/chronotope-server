@@ -1,4 +1,4 @@
-package com.jingluo.servicepastimegogame;
+package com.jingluo.pastimegogame;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
