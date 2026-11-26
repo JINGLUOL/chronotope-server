@@ -1,10 +1,10 @@
 package com.jingluo.serviceuser.controller;
 
+import com.jingluo.encryption.Cck;
 import com.jingluo.serviceuser.constant.AuthProperties;
 import com.jingluo.serviceuser.dto.req.CtpUserReq;
 import com.jingluo.serviceuser.entity.CtpUser;
 import com.jingluo.serviceuser.service.CtpUserService;
-import com.jingluo.serviceuser.util.Cck;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

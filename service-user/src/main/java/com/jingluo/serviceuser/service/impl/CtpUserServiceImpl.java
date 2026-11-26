@@ -2,7 +2,7 @@ package com.jingluo.serviceuser.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jingluo.serviceuser.common.util.do_converter.CtpUserConverter;
+import com.jingluo.serviceuser.util.do_converter.CtpUserConverter;
 import com.jingluo.serviceuser.dto.req.CtpUserReq;
 import com.jingluo.serviceuser.entity.CtpUser;
 import com.jingluo.serviceuser.mapper.CtpUserMapper;

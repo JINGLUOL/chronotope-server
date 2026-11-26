@@ -1,7 +1,6 @@
 package com.jingluo.gateway.filter;
 
 import com.jingluo.gateway.constant.AuthResult;
-import com.jingluo.gateway.constant.Result;
 import com.jingluo.gateway.service.AuthService;
 import com.jingluo.gateway.exception.UnauthorizedException;
 import jakarta.servlet.*;

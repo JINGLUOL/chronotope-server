@@ -35,15 +35,23 @@ spring:
                 - Path=/api/go-game/**
               filters:
                 - StripPrefix=1
+            - id: service-pastime-minecraft
+              uri: lb://SERVICE-PASTIME-MINECRAFT
+              predicates:
+                - Path=/api/mc/**
+              filters:
+                - StripPrefix=1
 
 springdoc:
   swagger-ui:
     path: /api-docs
     urls:
-      - name: 业务服务-用户
+      - name: 基础服务-用户
         url: /api/user/v3/api-docs   # 通过网关路由到子服务的 /v3/api-docs
       - name: 业务服务-围棋
         url: /api/go-game/v3/api-docs
+      - name: 业务服务-我的世界
+        url: /api/mc/v3/api-docs
 
 security:
   whitelist:
