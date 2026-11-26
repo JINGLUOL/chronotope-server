@@ -74,7 +74,7 @@
         <module>service-go-game</module>
         <module>service-user</module>
         <module>service-minecraft</module>
-        <module>global-util</module>
+        <module>chronotope-util</module>
     </modules>
 
 </project>

@@ -76,7 +76,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.jingluo</groupId>
-			<artifactId>global-util</artifactId>
+			<artifactId>chronotope-util</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
